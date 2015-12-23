@@ -14,8 +14,10 @@ exports = module.exports = function(req, res) {
 		V.model.findOne({
 			slug: req.params.slug
 		}).exec(function(err, result) {
+
+			//throw a 404 if no slug is found
 			if (!result) res.status(404).render('errors/404');
-			
+			locals.title = result.title;
 			locals.v = result;
 			next(err);
 		});
