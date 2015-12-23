@@ -1,6 +1,5 @@
 //Third Party Includes
 import $ from 'jquery';
-import _ from 'lodash';
 import Backbone from 'backbone';
 
 //Models
@@ -11,18 +10,18 @@ import Backbone from 'backbone';
 
 //Views
 import HomeView from './views/home';
+import CampainsView from './views/campaign';
+import VView from './views/v';
+
 
 var el;
-var cache = {
-  views: {},
-  collections: {},
-  models: {}
-};
 
 export default Backbone.Router.extend({
 
   routes: {
     '': 'home',
+    '/campaigns/:slug': 'campaigns',
+    '/v/:slug': 'v',
     '*path':  'defaultRoute'
   },
 
@@ -30,28 +29,30 @@ export default Backbone.Router.extend({
 
     el = $('#app');
 
-    console.log('init');
-
   },
 
   home: () => {
-    console.log('home');
+    var campainsView = new CampainsView({
+      el: el
+    });
 
-    // var pages = cache.collections.pages;
-    //
-    // pages.initial.done(function () {
-    //   var home = pages.get('');
-    //
-    //   var homeView = new HomeView({
-    //     model: home,
-    //     el: el
-    //   });
-    //
-    //   homeView.render();
-    //
-    //   cache.views.VideoView.render();
-    //
-    // });
+    campainsView.render();
+  },
+
+  campaigns: () => {
+    var homeView = new HomeView({
+      el: el
+    });
+
+    homeView.render();
+  },
+
+  v: () => {
+    var vView = new VView({
+      el: el
+    });
+
+    vView.render();
   },
 
   defaultRoute: () => {
