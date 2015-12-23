@@ -10,7 +10,7 @@ import Backbone from 'backbone';
 
 //Views
 import HomeView from './views/home';
-import CampainsView from './views/campaign';
+import CampaignsView from './views/campaign';
 import VView from './views/v';
 
 
@@ -32,11 +32,11 @@ export default Backbone.Router.extend({
   },
 
   home: () => {
-    var campainsView = new CampainsView({
+    var campaignsView = new CampaignsView({
       el: el
     });
 
-    campainsView.render();
+    campaignsView.render();
   },
 
   campaigns: () => {

@@ -13,11 +13,11 @@ var V = new keystone.List('V', {
 
 V.add({
 	title: { type: Types.Text, required: true, initial: true },
-  excerpt: { type: Types.Text, required: true, initial: true  },
-  image: { type: Types.LocalFile, dest: '/public/uploads' },
-  slug: { type: Types.Key, unique: true},
-  body: { type: Types.Html, dependsOn: { type: 'Campaign'} },
-  color: { type: Types.Text, required: true, initial: true }
+	excerpt: { type: Types.Text, required: true, initial: true  },
+	image: { type: Types.LocalFile, dest: '/public/uploads' },
+	slug: { type: Types.Key, unique: true},
+	body: { type: Types.Html, dependsOn: { type: 'Campaign'} },
+	color: { type: Types.Text, required: true, initial: true }
 });
 
 

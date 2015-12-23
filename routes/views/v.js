@@ -7,7 +7,26 @@ exports = module.exports = function(req, res) {
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'V';
+	locals.section = 'v';
+
+	locals.filters = {
+		v: req.params.slug
+	};
+
+	locals.data = {
+		v: []
+	};
+
+	view.on('init', function(next) {
+		var q = keystone.list('V').model.find({
+			slug: locals.filters.v
+		});
+
+		q.exec(function(err, result) {
+			locals.data.v = result;
+			next(err);
+		});
+	});
 
 	// Render the view
 	view.render('v');
