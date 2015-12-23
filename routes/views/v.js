@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var V = keystone.list('V');
 
 exports = module.exports = function(req, res) {
 
@@ -9,21 +10,13 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'v';
 
-	locals.filters = {
-		v: req.params.slug
-	};
-
-	locals.data = {
-		v: []
-	};
-
 	view.on('init', function(next) {
-		var q = keystone.list('V').model.findOne({
-			slug: locals.filters.v
-		});
-
-		q.exec(function(err, result) {
-			locals.data.v = result;
+		V.model.findOne({
+			slug: req.params.slug
+		}).exec(function(err, result) {
+			if (!result) res.status(404).render('errors/404');
+			
+			locals.v = result;
 			next(err);
 		});
 	});
