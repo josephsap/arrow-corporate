@@ -18,11 +18,12 @@ exports = module.exports = function(req, res) {
 	};
 
 	view.on('init', function(next) {
-		var q = keystone.list('V').model.find({
+		var q = keystone.list('V').model.findOne({
 			slug: locals.filters.v
 		});
 
 		q.exec(function(err, result) {
+			console.log(result);
 			locals.data.v = result;
 			next(err);
 		});
