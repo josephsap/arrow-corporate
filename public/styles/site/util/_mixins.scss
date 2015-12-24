@@ -1,0 +1,139 @@
+//  ==========================================================================
+//  Mixins
+//  @group Mixins
+//  To use a mixin for a particular rule, add this inside the ruleset's
+//  curly brackets:
+//  @example
+//    @include mix-in-name;
+//  ==========================================================================
+
+// http://stackoverflow.com/questions/11459746/css3-webfont-smoothing-and-antialiasing-in-firefox-and-opera
+@mixin antialiased {
+  -webkit-font-smooting: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// will trucate text needs a fixed width
+// http://css-tricks.com/snippets/css/truncate-string-with-ellipsis/
+@mixin truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// Button reset
+// will reset buttons styles
+@mixin reset-button {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  overflow: visible; // removes padding in IE
+  &::-moz-focus-inner {
+    // removes padding in Firefox
+    border: 0;
+    padding: 0;
+  }
+}
+
+// Mixin for smooth scrolling on iOS
+// https://css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements/
+@mixin smoothscroll($axis:y) {
+  overflow-#{$axis}: scroll; // has to be scroll, not auto
+  -webkit-overflow-scrolling: touch;
+}
+
+// Generic class to disable buttons and links
+@mixin disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+// Hide visually and from screen readers: h5bp.com/u
+@mixin hidden {
+  display: none;
+  visibility: hidden;
+}
+
+// Used to show elements
+// will be set to inherit by default, but can be block inline or inline-block as well,
+// just use the modifiers
+@mixin visible {
+    display: inherit;
+    visibility: visible;
+}
+
+@mixin text($size, $weight, $family, $color, $line) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: $family;
+    color: $color;
+    line-height: $line;
+}
+
+@mixin transform($var...) {
+    -webkit-transform: $var;
+    -moz-transform: $var;
+    -ms-transform: $var;
+    -o-transform: $var;
+    transform: $var;
+}
+
+@mixin transition($var...){
+  -webkit-transition: $var;
+  -moz-transition: $var;
+  -ms-transition: $var;
+  -o-transition: $var;
+  transition: $var;
+}
+@mixin animation($var...){
+  -webkit-animation: $var;
+  -moz-animation: $var;
+  -ms-animation: $var;
+  -o-animation: $var;
+  animation: $var;
+}
+
+// set REM size, px fallback
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+// usage
+//  @include font-size(14px);
+
+// @mixin image-2x($image, $width, $height) {
+//   @media (min--moz-device-pixel-ratio: 1.3),
+//          (-o-min-device-pixel-ratio: 2.6/2),
+//          (-webkit-min-device-pixel-ratio: 1.3),
+//          (min-device-pixel-ratio: 1.3),
+//          (min-resolution: 1.3dppx) {
+//     /* on retina, use image that's scaled by 2 */
+//     background-image: url($image);
+//     background-size: $width $height;
+//   }
+// }
+
+// @include image-2x("logo2x.png", 100px, 25px);
+
+@mixin at2x($path, $ext: "jpg", $w: auto, $h: auto, $extras: '') {
+    $at1x_path : "#{$path}.#{$ext}";
+    $at2x_path : "#{$path}@2x.#{$ext}";
+    background : url("#{$at1x_path}") $extras;
+    @media all and (-webkit-min-device-pixel-ratio : 1.5),
+          all and (-o-min-device-pixel-ratio: 3/2),
+          all and (min--moz-device-pixel-ratio: 1.5),
+          all and (min-device-pixel-ratio: 1.5) {
+            background      : url("#{$at2x_path}") $extras;
+            background-size : $w $h;
+    }
+}
+
+// @include at2x('../img/icn-arrow-small', 'png', 20px, 18px, right bottom no-repeat transparent);
+
+

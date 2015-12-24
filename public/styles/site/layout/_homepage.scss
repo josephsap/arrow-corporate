@@ -1,0 +1,11 @@
+.pre-slider {
+	p {
+		width: 90%;
+	    text-align: center;
+	    padding: 10% 0;
+	    margin: 0 auto;
+	    @include tablet-portrait-and-up {
+	    	max-width: 550px;
+	    }
+	}
+}

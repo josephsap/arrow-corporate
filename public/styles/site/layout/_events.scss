@@ -1,0 +1,60 @@
+/* There is some event styling in campaing.scss */
+.events {
+	float: left;
+	background-color: $black;
+}
+
+.events-top {
+	background-color: $black;
+	text-align: center;
+	color: $white;
+	padding: 0 90px;
+	margin-top: 90px;
+
+	h2 {
+		margin: 0 0 100px;
+		padding-bottom: 90px;
+	}
+}
+
+.events-bottom {
+	background-color: $gray;
+	padding-bottom: 120px;
+}
+
+.event-items {
+	margin-top: -120px;
+	li {
+		float: left;
+		overflow: hidden;
+	}
+
+	.overlay {
+		p, h4 {
+			top: 75%;
+		}
+	}
+
+	img {
+		@include transition(0.25s ease);
+		@include transform(scale(1));
+	}
+
+	a:hover img {
+		@include transform(scale(1.075));
+	}
+}
+
+.lg-promo {
+	width: 100%;
+	@include tablet-portrait-and-up {
+		width: 50%;
+	}
+}
+
+.sm-promo {
+	width: 100%;
+	@include tablet-portrait-and-up {
+		width: 25%;
+	}
+}

@@ -1,0 +1,27 @@
+.v-description-section {
+	background-color: $black;
+	padding-top: 60px;
+	padding-bottom: 60px;
+	color: $white;
+
+	h2 {
+		text-align: center;
+	}
+}
+
+.v-desc-wrapper {
+	margin: 50px 0;
+	li {
+		position: relative;
+		margin: 25px 0;
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: -12px;
+			left: 15px;
+			width: 50px;
+			height: 3px;
+			background-color: $white;
+		}
+	}
+}

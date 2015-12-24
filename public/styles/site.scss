@@ -12,11 +12,28 @@
 // You can also add your own custom variables to this file for
 // use in your site stylesheets.
 
-@import "site/variables";
+// @import "site/variables";
 
 
 // Site Styles
 // ===========
 
 // Add your own site style includes here
-@import "site/layout";
+// @import "site/layout";
+// @import 'base/normalize';
+@import 'site/util/variables';
+@import 'site/util/mixins';
+@import 'site/util/mediaqueries';
+@import 'site/util/helpers';
+@import 'site/base/typography';
+@import 'site/layout/global';
+@import 'site/layout/blocks';
+@import 'site/layout/nav';
+@import 'site/layout/intro';
+@import 'site/layout/campaign';
+@import 'site/layout/homepage';
+@import 'site/layout/content-page';
+@import 'site/layout/slick-slider-overrides';
+@import 'site/layout/v-description-section';
+@import 'site/layout/pre-footer';
+@import 'site/layout/events';

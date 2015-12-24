@@ -1,0 +1,86 @@
+.campaign-intro {
+	// max-height: 650px;
+	.jumbotron {
+		background-color: $white;
+		margin-bottom: 0;
+	}
+
+	.campaign-wrap {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+}
+
+.video-slider-container, .event-items {
+	padding: 0;
+
+	li {
+		position: relative;
+	}
+
+	a:hover > .overlay {
+		@include transition(0.25s ease);
+		opacity: 1;
+
+		&:after {
+			opacity: 1;
+			@include transform(translateY(0px));
+		}
+	}
+
+	a:hover p, a:hover h4 {
+		opacity: 1;
+		@include transform(translateY(0px));
+	}
+
+	.overlay {
+		background: rgba(0,0,0, 0.45);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		color: $white;
+		opacity: 0;
+		@include transition(0.25s ease);
+		@include tablet-portrait-and-up {
+			font-weight: 100;
+		}
+
+		p, h4 {
+			position: relative;
+		    top: 90%;
+		    float: left;
+		    margin-left: 30px;
+		    opacity: 0;
+		    @include transform(translateY(20px));
+		    @include transition(0.25s ease);
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			@include at2x('../images/play-btn', 'png', 50px, 50px, center center /cover no-repeat);
+			width: 50px;
+			height: 50px;
+			top: 50%;
+			left: 50%;
+			z-index: 5;
+			margin-left: -25px;
+			margin-top: -25px;
+			opacity: 0;
+			@include transform(translateY(-20px));
+			@include transition(0.25s ease);
+
+			// make it hover better
+
+			// http://tympanus.net/Development/HoverEffectIdeas/index2.html
+
+
+
+			// transform: translateX(150px);
+		}
+	}
+}

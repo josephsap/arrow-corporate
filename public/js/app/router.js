@@ -10,6 +10,7 @@ import Backbone from 'backbone';
 
 //Views
 import HomeView from './views/home';
+import SliderSectionView from './views/sliderSectionView';
 import CampaignsView from './views/campaign';
 import VView from './views/v';
 
@@ -18,45 +19,51 @@ var el;
 
 export default Backbone.Router.extend({
 
-  routes: {
-    '': 'home',
-    '/campaigns/:slug': 'campaigns',
-    '/v/:slug': 'v',
-    '*path':  'defaultRoute'
-  },
+    routes: {
+        '': 'home',
+        '/campaigns/:slug': 'campaigns',
+        '/v/:slug': 'v',
+        '*path':  'defaultRoute'
+    },
 
-  initialize: () => {
+    initialize: () => {
 
-    el = $('#app');
+        el = $('#app');
 
-  },
+    },
 
-  home: () => {
-    var campaignsView = new CampaignsView({
-      el: el
-    });
+    home: () => {
+        console.log('home view');
+        var homeView = new HomeView({
+            el: el
+        });
 
-    campaignsView.render();
-  },
+        var sliderSectionView = new SliderSectionView({
+            el: $('#slider-section')
+        });
 
-  campaigns: () => {
-    var homeView = new HomeView({
-      el: el
-    });
+        homeView.render();
+        sliderSectionView.render();
+    },
 
-    homeView.render();
-  },
+    campaigns: () => {
+        var campaignsView = new CampaignsView({
+            el: el
+        });
 
-  v: () => {
-    var vView = new VView({
-      el: el
-    });
+        campaignsView.render();
+    },
 
-    vView.render();
-  },
+    v: () => {
+        var vView = new VView({
+            el: el
+        });
 
-  defaultRoute: () => {
-    console.log('path');
-  }
+        vView.render();
+    },
+
+    defaultRoute: () => {
+        console.log('default path');
+    }
 
 });

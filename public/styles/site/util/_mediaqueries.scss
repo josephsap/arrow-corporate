@@ -1,0 +1,31 @@
+$mq-tablet-portrait-and-up   : 768px !default;
+$mq-up-to-sm-desktop   : 891px !default;
+$mq-sm-desktop-and-up: 992px !default;
+//$mq-actual-tablet-portrait  : 768px !default;
+// $mq-tablet-landscape-and-up : 1024px !default;
+//$mq-below-tablet-landscape : 1024px !default;
+// $mq-above-1214px : 1215px !default;
+// $mq-530 : 530px !default;
+// $mq-750 : 750px !default;
+// $mq-900 : 900px !default;
+ 
+// Everything above and including the tablet portrait
+@mixin tablet-portrait-and-up {
+  @media (min-width : $mq-tablet-portrait-and-up) {
+    @content;
+  }
+}
+
+// above and including small desktop
+@mixin sm-desktop-and-up {
+  @media (min-width : $mq-sm-desktop-and-up) {
+    @content;
+  }
+}
+
+// between tablet portrait and small desktop
+@mixin above-tablet-portrait-below {
+	@media (min-width : $mq-tablet-portrait-and-up) and (max-width: $mq-up-to-sm-desktop) {
+	  @content;
+	}
+}

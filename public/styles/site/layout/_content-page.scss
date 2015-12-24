@@ -1,0 +1,17 @@
+.content-hero {
+	height: 350px;
+	background: url('../images/goose.png') center center / cover no-repeat;
+	@include tablet-portrait-and-up {
+		height: 450px;
+	}
+}
+
+.content-main {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: $white;
+}
+
+.content-img {
+	margin: 50px 0;
+}

@@ -1,7 +1,15 @@
 extends ../layouts/default
 
 block content
-	.container: .jumbotron
-		P This is V
-		p #{v.title}
-		p #{v.excerpt}
+	.content-hero
+	.container
+		.row
+			section.content-main.col-xs-12.col-sm-10.col-sm-offset-1.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+				h1 #{v.title}
+				h3 #{v.excerpt}
+				p
+					| Smaller viewports mean a smaller stage for your motion to play out on, and this tends to amplify any motion in your animation. Suddenly 100 pixels is really far and multiple moving parts can start looking like they’re battling for space. An effect that looked great on big viewports can become muddled and confusing when it’s reframed in a smaller space. Making animated movements smaller will do the trick for simple motion like a basic move across the screen. But for more complex animation on smaller viewports, you’ll need to simplify and reduce the number of moving parts. The key to this is determining what the vital parts of the animation are, to zone in on the parts that are most important to its message. Then remove the less necessary bits to distill the motion’s message down to the essentials.
+				img.content-img(src='../assets/images/pic3.png')
+				p
+					| movements smaller will do the trick for simple motion like a basic move across the screen. But for more complex animation on smaller viewports, you’ll need to simplify and reduce the number of moving parts. The key to this is determining what the vital parts of the animation are, to zone in on the parts that are most important to its message. Then remove the less necessary bits to distill the motion’s message down to the essentials.
+
