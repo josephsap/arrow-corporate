@@ -4,6 +4,10 @@ import $ from 'jquery';
 
 export default Backbone.View.extend({
 
+	events: {
+		'click #search-btn': 'performSearch'
+	},
+
 	initialize: function() {
 		_.bindAll(this);
 		console.log(this.$el, this);
@@ -29,6 +33,8 @@ export default Backbone.View.extend({
 		this.$vComponents = $('.v-components');
 		this.$body = $('body');
 		this.$page = $('html, body');
+		this.$segment = $('.segment');
+		this.$circle = $('.circle');
 		this.inSliderSection = false;
 		this.mainTopBuffer = this.$main.offset().top - 50;
 		this.mainBottomBuffer = this.$main.offset().top + 70;
@@ -148,6 +154,7 @@ export default Backbone.View.extend({
 
 	showSlide: function() {
 		var _this = this;
+		var rotateAmount = 450;
 
 		// reset
 		this.delta = 0;
@@ -156,6 +163,19 @@ export default Backbone.View.extend({
 		this.$slide.each(function(i, slide) {
 			$(slide).toggleClass('active', (i >= _this.currentSlideIndex));
 		});
+
+		// the circular animation to keep track of which slide you are on
+		this.$segment.removeClass('back-forth');
+		this.$circle.css({
+			'-webkit-transform' : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)',
+			'-moz-transform'    : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)',
+			'-ms-transform'     : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)',
+			'-o-transform'      : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)',
+			'transform'         : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)'
+		});
+		setTimeout(function() {
+		    _this.$segment.addClass('back-forth');
+		}, 755);
 
 		// re-bind scroll
 		this.bindScroll();
@@ -215,6 +235,19 @@ export default Backbone.View.extend({
 
 	start: function() {
 		$(document).on('DOMMouseScroll mousewheel', _.throttle(this.scrollSlides, 70));
+	},
+
+	performSearch: function() {
+		var searchTerm = this.$('#search-input').val().trim();
+		if(searchTerm == '') {
+			$('.search').append('<p style="color: red;" class="error-msg">Please enter a search term.</p>');
+			setTimeout(function() {
+				$('.error-msg').css('display','none');
+			}, 1000);
+			return false;
+		} else {
+			window.open('https://www.arrow.com/en/products/search?q=' + searchTerm, '_blank');
+		}
 	}
 
 });

@@ -85,13 +85,33 @@
   -o-transition: $var;
   transition: $var;
 }
-@mixin animation($var...){
-  -webkit-animation: $var;
-  -moz-animation: $var;
-  -ms-animation: $var;
-  -o-animation: $var;
-  animation: $var;
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
 }
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
 
 // set REM size, px fallback
 @function calculateRem($size) {
