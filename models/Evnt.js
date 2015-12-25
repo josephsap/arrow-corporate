@@ -1,17 +1,13 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
-/**
- * Campaign Model
- * ==========
- */
 
-var Events = new keystone.List('Event', {
+var Evnts = new keystone.List('Evnts', {
 	sortable: true,
   track: true
 });
 
-Events.add({
+Evnts.add({
 	title: { type: Types.Text, required: true, initial: true },
   excerpt: { type: Types.Text, required: true, initial: true  },
   image: { type: Types.LocalFile, dest: '/public/uploads' },
@@ -27,5 +23,5 @@ Events.add({
  * Registration
  */
 
-Events.defaultColumns = 'title, excerpt, type';
-Events.register();
+Evnts.defaultColumns = 'title, excerpt, type';
+Evnts.register();

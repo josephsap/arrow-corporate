@@ -239,7 +239,7 @@ export default Backbone.View.extend({
 
 	performSearch: function() {
 		var searchTerm = this.$('#search-input').val().trim();
-		if(searchTerm == '') {
+		if(searchTerm === '') {
 			$('.search').append('<p style="color: red;" class="error-msg">Please enter a search term.</p>');
 			setTimeout(function() {
 				$('.error-msg').css('display','none');

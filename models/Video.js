@@ -7,13 +7,13 @@ var Types = keystone.Field.Types;
  */
 
 var Video = new keystone.List('Video', {
-  track: true
+	track: true
 });
 
 Video.add({
 	title: { type: Types.Text, required: true, initial: true },
-  videoUrl: { type: Types.Text, required: true, initial: true },
-  image: { type: Types.LocalFile, dest: '/public/uploads' }
+ 	videoUrl: { type: Types.Text, required: true, initial: true },
+ 	image: { type: Types.LocalFile, dest: '/public/uploads' }
 });
 
 
