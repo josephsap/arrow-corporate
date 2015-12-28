@@ -1,5 +1,6 @@
 var keystone = require('keystone');
 var Video = keystone.list('Video');
+var Evnt = keystone.list('Evnts');
 
 exports = module.exports = function(req, res) {
 
@@ -10,7 +11,22 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'campaign';
 
-	view.query('videos', Video.model.find());
+	view.on('init', function(next) {
+		Evnt.model.findOne({
+			slug: req.params.slug
+		})
+		.populate('videos')
+		.exec(function(err, result) {
+			//throw a 404 if no slug is found
+			if (!result) {
+				res.status(404).render('errors/404');
+			} else {
+				locals.title = result.title;
+				locals.Evnt = result;
+			}
+			next(err);
+		});
+	});
 
 	// Render the view
 	view.render('campaign');
