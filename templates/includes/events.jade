@@ -5,11 +5,11 @@ section.events
         .row
             ul.event-items.col-xs-12.col-md-10.col-md-offset-1
                 li.lg-promo
-                    a(href='#')
+                    a(href='/campaigns/#{evnt.slug}')
                         img(src='../assets/images/evt-vid-big.jpg')
                         .overlay
-                        h4 The title on the large video
-                        p This is overlay text, should be in CMS
+                        h4 #{evnt.title}
+                        p #{evnt.excerpt}
                 li.sm-promo
                     a(href='#')
                         img(src='../assets/images/evt-vid-sm.jpg')

@@ -31,6 +31,7 @@ export default Backbone.View.extend({
 		this.$rightSide = $('.right-side');
 		this.numRightSideItems = this.$rightSide.length;
 		this.$vComponents = $('.v-components');
+		this.$vImgContainer = $('.v-img-container');
 		this.$body = $('body');
 		this.$page = $('html, body');
 		this.$segment = $('.segment');
@@ -40,6 +41,8 @@ export default Backbone.View.extend({
 		this.mainBottomBuffer = this.$main.offset().top + 70;
 		this.mainTop = this.$main.offset().top;
 		this.setHeights(this.$winHeight);
+		this.sizeRightSideImgs();
+		this.imgHoverInfo();
 		this.render();
 	},
 
@@ -248,6 +251,51 @@ export default Backbone.View.extend({
 		} else {
 			window.open('https://www.arrow.com/en/products/search?q=' + searchTerm, '_blank');
 		}
+	},
+
+	sizeRightSideImgs: function() {
+
+		// loop through the slides
+		for(var i = 0; i < this.numSlides; i++) {
+
+			// find the number of images in each
+			var numVImgsInEach = this.$('.section-' + [i]).find('.v-img-container').length;
+
+			// if it's the section with one, set it to the same height as the section with four.
+			if(numVImgsInEach < 3) {
+				var imgHeight = this.$winHeight / 4;
+
+				// center the short section
+				this.$('.section-' + [i]).addClass('short-section');
+				this.$('.short-section').find('.v-img-wrap').css('margin-top', - imgHeight / 2);
+
+			// else set it to fit the window
+			} else {
+				var newImgHeight = this.$winHeight / numVImgsInEach;
+			}
+
+			this.$('.section-' + [i]).find('.v-img-container').each(function() {
+				$(this).css({
+					height: newImgHeight
+				});
+			});
+		}
+	},
+
+	imgHoverInfo: function() {
+        this.$vImgContainer.hover(function () {
+				var _this = $(this);
+				var $slidelem 	= _this.find('span');
+				$slidelem.stop().animate({'width':_this.width() * 2.5},200);
+				$slidelem.find('span').stop(true,true).fadeIn();
+			},
+			function () {
+				var _this = $(this);
+				var $slidelem 	= _this.find('span');
+				$slidelem.stop().animate({'width':'100%'},150);
+				$slidelem.find('span').stop(true,true).fadeOut();
+			}
+		);
 	}
 
 });

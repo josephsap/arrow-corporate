@@ -26,5 +26,27 @@ ul {
 	padding: 0;
 }
 
+// input placeholder styling
+::-webkit-input-placeholder {
+   color: $white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: $white;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $white;  
+}
+
+:-ms-input-placeholder {  
+   color: $white;  
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
 // html { overflow-y: scroll; }
 // body { overflow-x: hidden; }
