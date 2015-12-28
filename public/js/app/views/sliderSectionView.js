@@ -7,215 +7,226 @@ export default Backbone.View.extend({
 	events: {
 		'click #search-btn': 'performSearch'
 	},
+	delta: 0,
+	currentSlideIndex: 0,
+	scrollThreshold: 0,
+	inSliderSection: false,
+
 
 	initialize: function() {
-		_.bindAll(this);
-		console.log(this.$el, this);
+		var view = this;
+		_.bindAll(view);
+		console.log(view.$el, view);
 		console.log('slider section');
 
-		// scroll to top of page 
-		document.body.scrollTop = document.documentElement.scrollTop = 0;
-
-		// window height
-		this.$winHeight = $(window).height();
-
-		// our counter
-		this.delta = 0;
-		this.currentSlideIndex = 0;
-
-		// it's 3 to account for regular, PC mouses
-		this.scrollThreshold = 3;
-		this.$slide = $('.slide');
-		this.numSlides = this.$slide.length;
-		this.$main = $('#slider-section');
-		this.$rightSide = $('.right-side');
-		this.numRightSideItems = this.$rightSide.length;
-		this.$vComponents = $('.v-components');
-		this.$vImgContainer = $('.v-img-container');
-		this.$body = $('body');
-		this.$page = $('html, body');
-		this.$segment = $('.segment');
-		this.$circle = $('.circle');
-		this.inSliderSection = false;
-		this.mainTopBuffer = this.$main.offset().top - 50;
-		this.mainBottomBuffer = this.$main.offset().top + 70;
-		this.mainTop = this.$main.offset().top;
-		this.setHeights(this.$winHeight);
-		this.sizeRightSideImgs();
-		this.imgHoverInfo();
-		this.render();
+		view.render();
 	},
 
 	render: function() {
-		this.start();
+		var view = this;
+
+		// scroll to top of page
+		document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+		// window height
+		view.$winHeight = $(window).height();
+
+		// it's 3 to account for regular, PC mouses
+		view.$slide = $('.slide');
+		view.numSlides = view.$slide.length;
+		view.$main = $('#slider-section');
+		view.$rightSide = $('.right-side');
+		view.numRightSideItems = view.$rightSide.length;
+		view.$vComponents = $('.v-components');
+		view.$vImgContainer = $('.v-img-container');
+		view.$body = $('body');
+		view.$page = $('html, body');
+		view.$segment = $('.segment');
+		view.$circle = $('.circle');
+		view.mainTopBuffer = view.$main.offset().top - 50;
+		view.mainBottomBuffer = view.$main.offset().top + 70;
+		view.mainTop = view.$main.offset().top;
+		view.setHeights(view.$winHeight);
+		view.sizeRightSideImgs();
+		view.imgHoverInfo();
+
+		view.start();
 	},
 
 	setHeights: function(winHeight) {
-		var _this = this;
-		this.$winHeight = winHeight;
-		this.$main.css('height', this.$winHeight);
-		this.$rightSide.each(function() {
-			$(this).css('height', _this.$winHeight);
+		var view = this;
+		view.$winHeight = winHeight;
+		view.$main.css('height', view.$winHeight);
+		view.$rightSide.each(function() {
+			$(this).css('height', view.$winHeight);
 		});
-		this.$vComponents.css('height', this.winHeight * this.numRightSideItems);
+		view.$vComponents.css('height', view.winHeight * view.numRightSideItems);
 	},
 
 	scrollSlides: function(e) {
-		var _this = this;
+		var view = this;
 
 		// 1: up towards nav. -1: down towards footer
 		var scrollDir = e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0 ? 1 : -1;
 
 		// if we are scrolling from the top of the page, and we hit the slider section
-		if($(window).scrollTop() >= this.mainTopBuffer && this.currentSlideIndex === 0 ) {
+		if($(window).scrollTop() >= view.mainTopBuffer && view.currentSlideIndex === 0 ) {
 
 			// if scrolling down towards footer
 			if(scrollDir === -1) {
 
 				// if we are not yet in the slider section and the top of the slider section is less than the window scroll top
-				if(!this.inSliderSection && this.mainTop < $(window).scrollTop()) {
+				if(!view.inSliderSection && view.mainTop < $(window).scrollTop()) {
 
 					// disable scroll
 					$(document).off('DOMMouseScroll mousewheel');
 
 					// add overflow hidden to body
-					this.lockSlider();
+					view.lockSlider();
 
 					// lock slider in place
-					this.$page.animate({
-						scrollTop: _this.$main.offset().top
+					view.$page.animate({
+						scrollTop: view.$main.offset().top
 					}, 300);
 
 					// re-bind scroll, enabling slide advancement
-					this.bindScroll();
+					view.bindScroll();
 				}
 
 			// else, we are scrolling up towards the nav, and we want to give scroll control back to the user
 			} else {
-				this.unlockSlider();
+				view.unlockSlider();
 			}
 		}
 
 		// if scrolling down and we are in the slider section
-		if(scrollDir === -1 && this.inSliderSection) {
-			// this.$body.addClass('locked');
+		if(scrollDir === -1 && view.inSliderSection) {
+			// view.$body.addClass('locked');
 
 			// keeping track of amount scrolled when in slider section
 			if (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta < 0) {
-				this.delta++;
+				view.delta++;
 
 				// if we scroll enough to move the slide
-				if (this.delta >= this.scrollThreshold) {
+				if (view.delta >= view.scrollThreshold) {
 
 					// get out of slider section if on last slide
-					if(this.currentSlideIndex === 3) {
-						this.unlockSlider();
+					if(view.currentSlideIndex === 3) {
+						view.unlockSlider();
 						return false;
 					} else {
 
 						// advance the slide
 						$(document).off('DOMMouseScroll mousewheel');
-						this.nextSlide();
+						view.nextSlide();
 					}
 				}
 			}
 		}
 
 		// if scrolling up and we are in the slider section
-		if(scrollDir === 1 && this.inSliderSection && this.currentSlideIndex > 0) {
-			this.delta--;
+		if(scrollDir === 1 && view.inSliderSection && view.currentSlideIndex > 0) {
+			view.delta--;
 
-			if (Math.abs(this.delta) >= this.scrollThreshold) {
+			if (Math.abs(view.delta) >= view.scrollThreshold) {
 
 				// if we hit our threshold, unbind scroll
 				$(document).off('DOMMouseScroll mousewheel');
 
 				// advance slide
-				this.prevSlide();
+				view.prevSlide();
 			}
 
 		// if scrolling up, below slider section, then hit slider section
-		} 
-		else if($(window).scrollTop() <= this.mainBottomBuffer && scrollDir === 1 && this.currentSlideIndex === 3) {
+		}
+		else if($(window).scrollTop() <= view.mainBottomBuffer && scrollDir === 1 && view.currentSlideIndex === 3) {
 
-			this.$page.animate({
-				scrollTop: _this.$main.offset().top
+			view.$page.animate({
+				scrollTop: view.$main.offset().top
 			}, 300);
-			this.lockSlider();
+			view.lockSlider();
 		}
 	},
 
 	lockSlider: function() {
-		this.inSliderSection = true;
-		this.$body.addClass('locked');
+		var view = this;
+
+		view.inSliderSection = true;
+		view.$body.addClass('locked');
 	},
 
 	unlockSlider: function() {
-		this.inSliderSection = false;
-		this.$body.removeClass('locked');
+		var view = this;
+
+		view.inSliderSection = false;
+		view.$body.removeClass('locked');
 	},
 
 	showSlide: function() {
-		var _this = this;
+		var view = this;
 		var rotateAmount = 450;
 
 		// reset
-		this.delta = 0;
+		view.delta = 0;
 
 		// toggle active class, which animates the height
-		this.$slide.each(function(i, slide) {
-			$(slide).toggleClass('active', (i >= _this.currentSlideIndex));
+		view.$slide.each(function(i, slide) {
+			$(slide).toggleClass('active', (i >= view.currentSlideIndex));
 		});
 
 		// the circular animation to keep track of which slide you are on
-		this.$segment.removeClass('back-forth');
-		this.$circle.css({
-			'-webkit-transform' : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)',
-			'-moz-transform'    : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)',
-			'-ms-transform'     : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)',
-			'-o-transform'      : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)',
-			'transform'         : 'rotate(' + this.currentSlideIndex * rotateAmount + 'deg)'
+		view.$segment.removeClass('back-forth');
+		view.$circle.css({
+			'-webkit-transform' : 'rotate(' + view.currentSlideIndex * rotateAmount + 'deg)',
+			'-moz-transform'    : 'rotate(' + view.currentSlideIndex * rotateAmount + 'deg)',
+			'-ms-transform'     : 'rotate(' + view.currentSlideIndex * rotateAmount + 'deg)',
+			'-o-transform'      : 'rotate(' + view.currentSlideIndex * rotateAmount + 'deg)',
+			'transform'         : 'rotate(' + view.currentSlideIndex * rotateAmount + 'deg)'
 		});
 		setTimeout(function() {
-		    _this.$segment.addClass('back-forth');
+		    view.$segment.addClass('back-forth');
 		}, 755);
 
 		// re-bind scroll
-		this.bindScroll();
+		view.bindScroll();
 
 		// move the side bar up or down
-		this.moveSideBar(this.currentSlideIndex);
-	
+		view.moveSideBar(view.currentSlideIndex);
+
 	},
 
 	prevSlide: function() {
-		this.currentSlideIndex--;
+		var view = this;
 
-		if (this.currentSlideIndex < 0) {
-			this.currentSlideIndex = 0;
+		view.currentSlideIndex--;
+
+		if (view.currentSlideIndex < 0) {
+			view.currentSlideIndex = 0;
 		}
 
-		this.showSlide();
+		view.showSlide();
 
 	},
 
 	nextSlide: function() {
-		this.currentSlideIndex++;
+		var view = this;
 
-		if (this.currentSlideIndex > this.numSlides) { 
-			this.currentSlideIndex = this.numSlides;
+		view.currentSlideIndex++;
+
+		if (view.currentSlideIndex > view.numSlides) {
+			view.currentSlideIndex = view.numSlides;
 		}
 
-		this.showSlide();
+		view.showSlide();
 
 	},
 
 	moveSideBar: function() {
-		var _this = this;
+		var view = this;
 		setTimeout(function() {
-			var moveAmount = _this.$winHeight * _this.currentSlideIndex;
+			var moveAmount = view.$winHeight * view.currentSlideIndex;
 			var translateString = 'translateY(' + moveAmount + 'px)';
-			_this.$vComponents.css({
+			view.$vComponents.css({
 			    '-webkit-transform': translateString,
 			    '-moz-transform': translateString,
 			    '-ms-transform': translateString,
@@ -227,21 +238,25 @@ export default Backbone.View.extend({
 	},
 
 	bindScroll: function() {
-		var _this = this;
+		var view = this;
 
 		// then, after a the animation is done, bind scroll again
 		setTimeout(function() {
-			$(document).on('DOMMouseScroll mousewheel', _.throttle(_this.scrollSlides, 70));
+			$(document).on('DOMMouseScroll mousewheel', _.throttle(view.scrollSlides, 70));
 		}, 850);
 
 	},
 
 	start: function() {
-		$(document).on('DOMMouseScroll mousewheel', _.throttle(this.scrollSlides, 70));
+		var view = this;
+
+		$(document).on('DOMMouseScroll mousewheel', _.throttle(view.scrollSlides, 70));
 	},
 
 	performSearch: function() {
-		var searchTerm = this.$('#search-input').val().trim();
+		var view = this;
+
+		var searchTerm = view.$('#search-input').val().trim();
 		if(searchTerm === '') {
 			$('.search').append('<p style="color: red;" class="error-msg">Please enter a search term.</p>');
 			setTimeout(function() {
@@ -254,27 +269,28 @@ export default Backbone.View.extend({
 	},
 
 	sizeRightSideImgs: function() {
+		var view = this;
 
 		// loop through the slides
-		for(var i = 0; i < this.numSlides; i++) {
+		for(var i = 0; i < view.numSlides; i++) {
 
 			// find the number of images in each
-			var numVImgsInEach = this.$('.section-' + [i]).find('.v-img-container').length;
+			var numVImgsInEach = view.$('.section-' + [i]).find('.v-img-container').length;
 
 			// if it's the section with one, set it to the same height as the section with four.
 			if(numVImgsInEach < 3) {
-				var imgHeight = this.$winHeight / 4;
+				var imgHeight = view.$winHeight / 4;
 
 				// center the short section
-				this.$('.section-' + [i]).addClass('short-section');
-				this.$('.short-section').find('.v-img-wrap').css('margin-top', - imgHeight / 2);
+				view.$('.section-' + [i]).addClass('short-section');
+				view.$('.short-section').find('.v-img-wrap').css('margin-top', - imgHeight / 2);
 
 			// else set it to fit the window
 			} else {
-				var newImgHeight = this.$winHeight / numVImgsInEach;
+				var newImgHeight = view.$winHeight / numVImgsInEach;
 			}
 
-			this.$('.section-' + [i]).find('.v-img-container').each(function() {
+			view.$('.section-' + [i]).find('.v-img-container').each(function() {
 				$(this).css({
 					height: newImgHeight
 				});
@@ -283,15 +299,19 @@ export default Backbone.View.extend({
 	},
 
 	imgHoverInfo: function() {
-        this.$vImgContainer.hover(function () {
-				var _this = $(this);
-				var $slidelem 	= _this.find('span');
-				$slidelem.stop().animate({'width':_this.width() * 2.5},200);
+				var view = this;
+				var $view = $(this);
+
+        view.$vImgContainer.hover(function () {
+				var $slidelem = $view.find('span');
+				$slidelem.stop().animate({'width':view.width() * 2.5},200);
 				$slidelem.find('span').stop(true,true).fadeIn();
 			},
 			function () {
-				var _this = $(this);
-				var $slidelem 	= _this.find('span');
+				var view = this;
+				var $view = $(this);
+
+				var $slidelem = $view.find('span');
 				$slidelem.stop().animate({'width':'100%'},150);
 				$slidelem.find('span').stop(true,true).fadeOut();
 			}
