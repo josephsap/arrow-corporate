@@ -14,14 +14,21 @@
 	li {
 		position: relative;
 		margin: 25px 0;
-		&:after {
-			content: '';
-			position: absolute;
-			bottom: -12px;
-			left: 15px;
-			width: 50px;
-			height: 3px;
-			background-color: $white;
+	}
+	a {
+		color: $white;
+		@include transition(0.25s);
+		&:hover {
+			color: darken($white, 10%);
+			@include transition(0.25s);
 		}
 	}
+}
+
+.v-color {
+	position: absolute;
+	bottom: -12px;
+	left: 15px;
+	width: 60px;
+	height: 3px;
 }

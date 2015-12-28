@@ -3,10 +3,10 @@
         .row
             h2 The Section Title goes Here
             ul.v-desc-wrapper
-
-                //- these need to be output in a loop
-                li.col-sm-6.col-md-4.col-lg-3
-                    h4 Aerospace &amp; Defense
-                    p
-                        | been tested and are supported. IE8 and IE7 have been tested and work just fine. But if you're supporting IE8
-                    //- span(style='background-color: #{v.color};')
+                if vs.length
+                    each v in vs
+                        a(href="/v/#{v.slug}")
+                            li.col-sm-6.col-md-4.col-lg-3
+                                h4 #{v.title}
+                                p #{v.excerpt}
+                                span.v-color(style='background-color: #{v.color};')

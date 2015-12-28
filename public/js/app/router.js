@@ -38,15 +38,16 @@ export default Backbone.Router.extend({
             el: el
         });
 
-        var sliderSectionView = new SliderSectionView({
-            el: $('#slider-section')
-        });
+        // var sliderSectionView = new SliderSectionView({
+        //     el: $('#slider-section')
+        // });
 
         homeView.render();
         sliderSectionView.render();
     },
 
     campaigns: () => {
+        console.log('campaign')
         var campaignsView = new CampaignsView({
             el: el
         });

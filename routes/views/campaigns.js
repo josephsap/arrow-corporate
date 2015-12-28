@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var Video = keystone.list('Video');
 
 exports = module.exports = function(req, res) {
 
@@ -7,7 +8,9 @@ exports = module.exports = function(req, res) {
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'Campaign';
+	locals.section = 'campaign';
+
+	view.query('videos', Video.model.find());
 
 	// Render the view
 	view.render('campaign');

@@ -1,5 +1,6 @@
 var keystone = require('keystone');
 var Evnt = keystone.list('Evnts');
+var V = keystone.list('V');
 
 exports = module.exports = function(req, res) {
 	
@@ -14,16 +15,20 @@ exports = module.exports = function(req, res) {
 
 	view.on('init', function(next) {
 		Evnt.model.findOne({
+
 			// slug: req.params.slug
 		}).exec(function(err, result) {
+			
 			//throw a 404 if no slug is found
 			if (!result) res.status(404).render('errors/404');
-			// locals.title = result.title;
 			locals.evnt = result;
 			next(err);
 		});
 	});
-	
+
+	// grab the Vs
+	view.query('vs', V.model.find());
+
 	// Render the view
 	view.render('index');
 	
