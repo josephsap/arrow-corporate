@@ -4,6 +4,7 @@ logs
 
 #compiled code
 public/js/bundle.js
+public/uploads/
 
 # Runtime data
 pids

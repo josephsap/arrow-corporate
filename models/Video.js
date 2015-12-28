@@ -13,7 +13,7 @@ var Video = new keystone.List('Video', {
 Video.add({
 	title: { type: Types.Text, required: true, initial: true },
  	videoUrl: { type: Types.Text, required: true, initial: true },
- 	image: { type: Types.LocalFile, dest: '/public/uploads' }
+ 	image: { type: Types.LocalFile, dest: 'public/uploads' }
 });
 
 

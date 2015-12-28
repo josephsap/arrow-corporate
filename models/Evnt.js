@@ -10,7 +10,7 @@ var Evnts = new keystone.List('Evnts', {
 Evnts.add({
 	title: { type: Types.Text, required: true, initial: true },
   excerpt: { type: Types.Text, required: true, initial: true  },
-  image: { type: Types.LocalFile, dest: '/public/uploads' },
+  image: { type: Types.LocalFile, dest: 'public/uploads' },
   type: { type: Types.Select, options: ['Campaign', 'Link'], required: true, initial: true },
   slug: { type: Types.Key, dependsOn: { type: 'Campaign'} },
   body: { type: Types.Textarea, dependsOn: { type: 'Campaign'} },
