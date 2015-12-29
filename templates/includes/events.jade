@@ -4,28 +4,28 @@ section.events
     .events-bottom.col-xs-12
         .row
             ul.event-items.col-xs-12.col-md-10.col-md-offset-1
-                li.lg-promo
+                li.lg-promo.hover-media
                     a(href='/campaigns/#{evnt.slug}')
-                        img(src='../assets/images/evt-vid-big.jpg')
+                        img(src='/uploads/#{evnt.image.filename}')
                         .overlay
-                        h4 #{evnt.title}
-                        p #{evnt.excerpt}
-                li.sm-promo
+                            h4 #{evnt.title}
+                            p #{evnt.excerpt}
+                li.sm-promo.hover-media
+                    a(href='#')
+                        //- img(src='../assets/images/evt-vid-sm.jpg')
+                        .overlay
+                        p This is overlay text, should be in CMS
+                li.sm-promo.hover-media
                     a(href='#')
                         img(src='../assets/images/evt-vid-sm.jpg')
                         .overlay
                         p This is overlay text, should be in CMS
-                li.sm-promo
+                li.sm-promo.hover-media
                     a(href='#')
                         img(src='../assets/images/evt-vid-sm.jpg')
                         .overlay
                         p This is overlay text, should be in CMS
-                li.sm-promo
-                    a(href='#')
-                        img(src='../assets/images/evt-vid-sm.jpg')
-                        .overlay
-                        p This is overlay text, should be in CMS
-                li.sm-promo
+                li.sm-promo.hover-media
                     a(href='#')
                         img(src='../assets/images/evt-vid-sm.jpg')
                         .overlay

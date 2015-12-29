@@ -1,11 +1,10 @@
 extends ../layouts/default
 
 block content
-	section.jumbotron.intro-video.text-center
+	section.jumbotron.intro-video.text-center(style='background-image: url(uploads/#{hero.image.filename});')
 		.container
-			h1 Hello, world!
-			p
-			a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
+			h1 #{hero.title}
+			a.btn.btn-primary.btn-lg.btn-hollow(href='#{hero.link}', role='button') #{hero.linkText}
 	section.pre-slider
 		p
 			| Hashtag chartreuse cold-pressed dreamcatcher. Fingerstache venmo cliche VHS. Gluten-free tousled keytar kinfolk health goth cardigan. Keffiyeh humblebrag stumptown

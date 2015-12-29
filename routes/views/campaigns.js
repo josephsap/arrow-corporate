@@ -1,5 +1,5 @@
 var keystone = require('keystone');
-var Video = keystone.list('Video');
+// var Video = keystone.list('Video');
 var Evnt = keystone.list('Evnts');
 
 exports = module.exports = function(req, res) {
