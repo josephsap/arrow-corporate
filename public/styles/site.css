@@ -2703,8 +2703,13 @@ input:focus:-ms-input-placeholder {
 .slick-vertical .slick-slide {
   border: 0; }
 
-.slick-slide img {
-  width: 100%; }
+.video-slider {
+  border: 4px solid red; }
+
+.slick-slide {
+  border: 4px solid green; }
+  .slick-slide img {
+    width: 100%; }
 
 .slick-slider {
   margin: 0; }
