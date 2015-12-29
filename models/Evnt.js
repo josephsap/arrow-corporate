@@ -18,8 +18,7 @@ Evnts.add({
 	v1: { type: Types.Relationship, ref: 'V', many: false, dependsOn: { type: 'Campaign'} },
 	v2: { type: Types.Relationship, ref: 'V', many: false, dependsOn: { type: 'Campaign'} },
 	v3: { type: Types.Relationship, ref: 'V', many: false, dependsOn: { type: 'Campaign'} },
-  link: {type: Types.Url, dependsOn: { type: 'Link'} },
-  featured: { type: Types.Boolean }
+  link: {type: Types.Url, dependsOn: { type: 'Link'} }
 });
 
 

@@ -73,14 +73,11 @@
 			opacity: 0;
 			@include transform(translateY(-20px));
 			@include transition(0.25s ease);
-
-			// make it hover better
-
-			// http://tympanus.net/Development/HoverEffectIdeas/index2.html
-
-
-
-			// transform: translateX(150px);
 		}
 	}
+}
+
+.hidden {
+	display: none;
+	// opacity: 0;
 }

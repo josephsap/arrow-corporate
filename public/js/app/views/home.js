@@ -4,6 +4,10 @@ import $ from 'jquery';
 
 export default Backbone.View.extend({
 
+	// events: {
+	// 	'click #more': 'loadMoreEvents'
+	// },
+
 	initialize: function() {
 		_.bindAll(this);
 		this.$navHeight = $('.navbar').height();
@@ -24,6 +28,15 @@ export default Backbone.View.extend({
 
 	handleWindowResize: function() {
 		this.fullScreenIntro();
-	},
+	}
+
+	// loadMoreEvents: function() {
+	// 	console.log('hi')
+	// 	this.$('.sm-promo').each(function() {
+	// 		if($(this).hasClass('hidden')) {
+	// 			$(this).removeClass('hidden');
+	// 		}
+	// 	});
+	// }
 
 });

@@ -13,6 +13,7 @@ import HomeView from './views/home';
 // import SliderSectionView from './views/sliderSectionView';
 import CampaignsView from './views/campaign';
 import VView from './views/v';
+import EventsSectionView from './views/eventsSectionView'
 
 var el;
 
@@ -39,8 +40,12 @@ export default Backbone.Router.extend({
         //     el: $('#slider-section')
         // });
 
-        homeView.render();
+        var eventsView = new EventsSectionView({
+            el: $('#events')
+        });
 
+        homeView.render();
+        eventsView.render();
         // sliderSectionView.render();
     },
 

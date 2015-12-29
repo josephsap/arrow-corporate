@@ -2716,6 +2716,9 @@ input:focus:-ms-input-placeholder {
           background: url("/uploads/play-btn@2x.png") center center/cover no-repeat;
           background-size: 50px 50px; } }
 
+.hidden {
+  display: none; }
+
 .pre-slider p {
   width: 90%;
   text-align: center;
@@ -2918,7 +2921,7 @@ input:focus:-ms-input-placeholder {
     transition: 0.25s ease; }
 
 /* There is some event styling in campaing.scss */
-.events {
+#events {
   float: left;
   background-color: #141414; }
 
@@ -2940,7 +2943,8 @@ input:focus:-ms-input-placeholder {
   margin-top: -120px; }
   .event-items li {
     float: left;
-    overflow: hidden; }
+    overflow: hidden;
+    min-height: 167px; }
   .event-items .overlay p, .event-items .overlay h4 {
     top: 65%; }
   .event-items img {

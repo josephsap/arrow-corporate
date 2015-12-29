@@ -23,7 +23,9 @@ exports = module.exports = function(req, res) {
 		});
 	});
 
-	view.query('evnts', Evnt.model.find());
+
+	// get all of the events. sort = sortable in cms
+	view.query('evnts', Evnt.model.find().sort({sortOrder:1}));
 
 
 	// grab the Vs

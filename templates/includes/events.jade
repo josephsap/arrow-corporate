@@ -1,22 +1,29 @@
-section.events
+section#events
     .events-top.col-xs-12
         h2 This is the Events Section Title
     .events-bottom.col-xs-12
         .row
             ul.event-items.col-xs-12.col-md-10.col-md-offset-1
                 each evnt, index in evnts
-                    p #{evnt.featured}
-                    if evnt.featured
+                    if evnt.sortOrder === 0
                         li.lg-promo.hover-media
                             a(href='/campaigns/#{evnt.slug}')
                                 img(src='/uploads/#{evnt.image.filename}')
                                 .overlay
                                     h4 #{evnt.title}
                                     p #{evnt.excerpt}
-                    else
+                    else if index > 0 && index <= 4
                         li.sm-promo.hover-media
                             a(href='/campaigns/#{evnt.slug}')
                                 img(src='/uploads/#{evnt.image.filename}')
                                 .overlay
                                     h4 #{evnt.title}
                                     p #{evnt.excerpt}
+                    else
+                        li.sm-promo.hover-media.hidden
+                            a(href='/campaigns/#{evnt.slug}')
+                                img(src='/uploads/#{evnt.image.filename}')
+                                .overlay
+                                    h4 #{evnt.title}
+                                    p #{evnt.excerpt}
+            h2#more.btn.btn-hollow.btn-default load more

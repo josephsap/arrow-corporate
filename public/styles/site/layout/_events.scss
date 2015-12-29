@@ -1,5 +1,5 @@
 /* There is some event styling in campaing.scss */
-.events {
+#events {
 	float: left;
 	background-color: $black;
 }
@@ -27,6 +27,8 @@
 	li {
 		float: left;
 		overflow: hidden;
+		min-height: 167px;
+		// @include clearfix;
 	}
 
 	.overlay {
