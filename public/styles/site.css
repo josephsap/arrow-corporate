@@ -2182,6 +2182,31 @@ input[type="button"].btn-block {
       .jumbotron .h1 {
         font-size: 63px; } }
 
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden; }
+  .embed-responsive .embed-responsive-item,
+  .embed-responsive iframe,
+  .embed-responsive embed,
+  .embed-responsive object,
+  .embed-responsive video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0; }
+
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%; }
+
+.embed-responsive-4by3 {
+  padding-bottom: 75%; }
+
 html, body {
   font-size: 1.05em; }
   @media screen and (min-width: 767px) {
@@ -2621,14 +2646,14 @@ input:focus:-ms-input-placeholder {
   padding: 0; }
   .video-slider-container li, .event-items li {
     position: relative; }
-  .video-slider-container a:hover > .overlay, .event-items a:hover > .overlay {
+  .video-slider-container .hover-media:hover .overlay, .event-items .hover-media:hover .overlay {
     transition: 0.25s ease;
     opacity: 1; }
-    .video-slider-container a:hover > .overlay:after, .event-items a:hover > .overlay:after {
+    .video-slider-container .hover-media:hover .overlay:after, .event-items .hover-media:hover .overlay:after {
       opacity: 1;
       -webkit-transform: translateY(0px);
       transform: translateY(0px); }
-  .video-slider-container a:hover p, .video-slider-container a:hover h4, .event-items a:hover p, .event-items a:hover h4 {
+  .video-slider-container .hover-media:hover p, .video-slider-container a:hover h4, .event-items .hover-media:hover p, .event-items a:hover h4 {
     opacity: 1;
     -webkit-transform: translateY(0px);
     transform: translateY(0px); }
@@ -2701,15 +2726,10 @@ input:focus:-ms-input-placeholder {
   margin: 50px 0; }
 
 .slick-vertical .slick-slide {
-  border: 0; }
+  border: 0 !important; }
 
-.video-slider {
-  border: 4px solid red; }
-
-.slick-slide {
-  border: 4px solid green; }
-  .slick-slide img {
-    width: 100%; }
+.slick-slide img {
+  width: 100%; }
 
 .slick-slider {
   margin: 0; }

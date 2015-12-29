@@ -7,7 +7,6 @@ export default Backbone.View.extend({
 
   initialize: function() {
     _.bindAll(this);
-    // this.render();
   },
 
   render: function() {

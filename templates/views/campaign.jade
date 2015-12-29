@@ -15,9 +15,9 @@ block content
 				each video in Evnt.videos
 					div
 						a(href='#')
-							.embed-responsive.embed-responsive-16by9
-								iframe(src='#{video.videoUrl}')
-									.overlay
-										p #{video.title}
+							.embed-responsive.embed-responsive-16by9.hover-media
+								iframe.embed-responsive-item(src='#{video.videoUrl}')
+								.overlay
+									p #{video.title}
 
 		include ../includes/pre-footer.jade
