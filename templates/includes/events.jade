@@ -4,29 +4,19 @@ section.events
     .events-bottom.col-xs-12
         .row
             ul.event-items.col-xs-12.col-md-10.col-md-offset-1
-                li.lg-promo.hover-media
-                    a(href='/campaigns/#{evnt.slug}')
-                        img(src='/uploads/#{evnt.image.filename}')
-                        .overlay
-                            h4 #{evnt.title}
-                            p #{evnt.excerpt}
-                li.sm-promo.hover-media
-                    a(href='#')
-                        //- img(src='../assets/images/evt-vid-sm.jpg')
-                        .overlay
-                        p This is overlay text, should be in CMS
-                li.sm-promo.hover-media
-                    a(href='#')
-                        img(src='../assets/images/evt-vid-sm.jpg')
-                        .overlay
-                        p This is overlay text, should be in CMS
-                li.sm-promo.hover-media
-                    a(href='#')
-                        img(src='../assets/images/evt-vid-sm.jpg')
-                        .overlay
-                        p This is overlay text, should be in CMS
-                li.sm-promo.hover-media
-                    a(href='#')
-                        img(src='../assets/images/evt-vid-sm.jpg')
-                        .overlay
-                        p This is overlay text, should be in CMS
+                each evnt, index in evnts
+                    p #{evnt.featured}
+                    if evnt.featured
+                        li.lg-promo.hover-media
+                            a(href='/campaigns/#{evnt.slug}')
+                                img(src='/uploads/#{evnt.image.filename}')
+                                .overlay
+                                    h4 #{evnt.title}
+                                    p #{evnt.excerpt}
+                    else
+                        li.sm-promo.hover-media
+                            a(href='/campaigns/#{evnt.slug}')
+                                img(src='/uploads/#{evnt.image.filename}')
+                                .overlay
+                                    h4 #{evnt.title}
+                                    p #{evnt.excerpt}

@@ -23,19 +23,8 @@ exports = module.exports = function(req, res) {
 		});
 	});
 
+	view.query('evnts', Evnt.model.find());
 
-	view.on('init', function(next) {
-		Evnt.model.findOne({
-
-			// slug: req.params.slug
-		}).exec(function(err, result) {
-			
-			//throw a 404 if no slug is found
-			if (!result) res.status(404).render('errors/404');
-			locals.evnt = result;
-			next(err);
-		});
-	});
 
 	// grab the Vs
 	view.query('vs', V.model.find());
