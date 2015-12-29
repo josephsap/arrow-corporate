@@ -16,7 +16,10 @@ V.add({
 	excerpt: { type: Types.Text, required: true, initial: true  },
 	image: { type: Types.LocalFile, dest: 'public/uploads' },
 	slug: { type: Types.Key, unique: true},
-	body: { type: Types.Html, dependsOn: { type: 'Campaign' } },
+	body: { type: Types.Html },
+  v1: { type: Types.Relationship, ref: 'V'},
+  v2: { type: Types.Relationship, ref: 'V' },
+  v3: { type: Types.Relationship, ref: 'V' },
 	color: { type: Types.Text, required: true, initial: true }
 });
 

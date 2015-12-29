@@ -15,6 +15,9 @@ Evnts.add({
   slug: { type: Types.Key, dependsOn: { type: 'Campaign'} },
   body: { type: Types.Textarea, dependsOn: { type: 'Campaign'} },
   videos: { type: Types.Relationship, ref: 'Video', many: true, dependsOn: { type: 'Campaign'} },
+	v1: { type: Types.Relationship, ref: 'V', many: false, dependsOn: { type: 'Campaign'} },
+	v2: { type: Types.Relationship, ref: 'V', many: false, dependsOn: { type: 'Campaign'} },
+	v3: { type: Types.Relationship, ref: 'V', many: false, dependsOn: { type: 'Campaign'} },
   link: {type: Types.Url, dependsOn: { type: 'Link'} }
 });
 
