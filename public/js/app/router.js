@@ -20,8 +20,8 @@ export default Backbone.Router.extend({
 
     routes: {
         '': 'home',
-        '/campaigns/:slug': 'campaigns',
-        '/v/:slug': 'v',
+        'campaigns/:slug': 'campaigns',
+        'v/:slug': 'v',
         '*path':  'defaultRoute'
     },
 
