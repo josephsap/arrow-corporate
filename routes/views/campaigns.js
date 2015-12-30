@@ -15,6 +15,7 @@ exports = module.exports = function(req, res) {
 			slug: req.params.slug
 		})
 		.populate('videos')
+		.populate('v')
 		.exec(function(err, result) {
 			//throw a 404 if no slug is found
 			if (!result) {
