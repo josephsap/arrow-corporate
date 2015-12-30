@@ -5,10 +5,10 @@ var V = keystone.list('V');
 var Slides = keystone.list('HomeSlides');
 
 exports = module.exports = function(req, res) {
-	
+
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
-	
+
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	// locals.section = 'home';
@@ -30,7 +30,7 @@ exports = module.exports = function(req, res) {
 	// });
 
 	// get the home slides
-	view.query('slides', Slides.model.find());
+	view.query('slides', Slides.model.find().populate('v'));
 
 	// get all of the events. sort = sortable in cms
 	view.query('evnts', Evnt.model.find().sort({sortOrder:1}));
@@ -41,5 +41,5 @@ exports = module.exports = function(req, res) {
 
 	// Render the view
 	view.render('index');
-	
+
 };
