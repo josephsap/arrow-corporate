@@ -24,17 +24,12 @@ exports = module.exports = function(req, res) {
 		});
 	});
 
-	// Slides.model.find().where('V').in([V.id]).exec(
-	// 	function(err, slideV) {
-	// 		console.log('=====', slideV);
-	// });
 
-	// get the home slides
+	// get the home slides and populate the related Vs
 	view.query('slides', Slides.model.find().populate('v'));
 
 	// get all of the events. sort = sortable in cms
 	view.query('evnts', Evnt.model.find().sort({sortOrder:1}));
-
 
 	// grab the Vs
 	view.query('vs', V.model.find());

@@ -13,7 +13,9 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 		V.model.findOne({
 			slug: req.params.slug
-		}).exec(function(err, result) {
+		})
+		.populate('v')
+		.exec(function(err, result) {
 			//throw a 404 if no slug is found
 			if (!result) {
 				res.status(404).render('errors/404');
