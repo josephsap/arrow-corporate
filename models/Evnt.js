@@ -3,6 +3,7 @@ var Types = keystone.Field.Types;
 
 
 var Evnts = new keystone.List('Evnts', {
+	map: {name: 'title'},
 	sortable: true,
   track: true
 });
@@ -26,5 +27,5 @@ Evnts.add({
  * Registration
  */
 
-Evnts.defaultColumns = 'title, excerpt, type';
+Evnts.defaultColumns = 'name, excerpt, type';
 Evnts.register();

@@ -7,6 +7,7 @@ var Types = keystone.Field.Types;
  */
 
 var V = new keystone.List('V', {
+  map: {name: 'title'},
   sortable: true,
   track: true
 });
@@ -29,5 +30,5 @@ V.add({
  * Registration
  */
 
-V.defaultColumns = 'title, excerpt';
+V.defaultColumns = 'name, excerpt';
 V.register();
