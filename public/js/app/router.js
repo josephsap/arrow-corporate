@@ -10,7 +10,7 @@ import Backbone from 'backbone';
 
 //Views
 import HomeView from './views/home';
-// import SliderSectionView from './views/sliderSectionView';
+import SliderSectionView from './views/sliderSectionView';
 import CampaignsView from './views/campaign';
 import VView from './views/v';
 import EventsSectionView from './views/eventsSectionView';
@@ -36,17 +36,16 @@ export default Backbone.Router.extend({
             el: el
         });
 
-        // var sliderSectionView = new SliderSectionView({
-        //     el: $('#slider-section')
-        // });
+        var sliderSectionView = new SliderSectionView({
+            el: $('#slider-section')
+        });
 
         var eventsView = new EventsSectionView({
             el: $('#events')
         });
 
         homeView.render();
-        // eventsView.render();
-        // sliderSectionView.render();
+        sliderSectionView.render();
     },
 
     campaigns: () => {

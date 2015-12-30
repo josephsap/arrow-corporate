@@ -2,6 +2,7 @@ var keystone = require('keystone');
 var Hero = keystone.list('HomeHero');
 var Evnt = keystone.list('Evnts');
 var V = keystone.list('V');
+var Slides = keystone.list('HomeSlides');
 
 exports = module.exports = function(req, res) {
 	
@@ -23,6 +24,13 @@ exports = module.exports = function(req, res) {
 		});
 	});
 
+	// Slides.model.find().where('V').in([V.id]).exec(
+	// 	function(err, slideV) {
+	// 		console.log('=====', slideV);
+	// });
+
+	// get the home slides
+	view.query('slides', Slides.model.find());
 
 	// get all of the events. sort = sortable in cms
 	view.query('evnts', Evnt.model.find().sort({sortOrder:1}));

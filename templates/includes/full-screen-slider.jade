@@ -1,72 +1,61 @@
 #slider-section
 	.circle
-		img.segment(src='../assets/images/segment1.png')
-	section#example-1.slide.active
-		.slide-content
-			h1 Electronic Components
-			h3 Parts &amp; Pieces
-			p Cat ipsum dolor sit amet, human is washing you why halp oh the horror flee scratch hiss bite or stare out the window. Hate dog chase laser. All of a sudden cat goes crazy. Kitty loves pigs put toy mouse in food bowl run out of litter box at full speed so chase dog then run away or lounge in doorway.
-			form.search
-				input#search-input(type="text", placeholder="Search Components")
-				input#search-btn(type="button", value="search")
-	section#example-2.slide.active
-		.slide-content
-			h1 Electronic Components
-			h3 Parts &amp; Pieces
-			p Cat ipsum dolor sit amet, human is washing you why halp oh the horror flee scratch hiss bite or stare out the window. Hate dog chase laser. All of a sudden cat goes crazy. Kitty loves pigs put toy mouse in food bowl run out of litter box at full speed so chase dog then run away or lounge in doorway.
-			a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
-	section#example-3.slide.active
-		.slide-content
-			h1 Electronic Components
-			h3 Parts &amp; Pieces
-			p Cat ipsum dolor sit amet, human is washing you why halp oh the horror flee scratch hiss bite or stare out the window. Hate dog chase laser. All of a sudden cat goes crazy. Kitty loves pigs put toy mouse in food bowl run out of litter box at full speed so chase dog then run away or lounge in doorway.
-			a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
-	section#example-4.slide.active
-		.slide-content
-			h1 Electronic Components
-			h3 Parts &amp; Pieces
-			p Cat ipsum dolor sit amet, human is washing you why halp oh the horror flee scratch hiss bite or stare out the window. Hate dog chase laser. All of a sudden cat goes crazy. Kitty loves pigs put toy mouse in food bowl run out of litter box at full speed so chase dog then run away or lounge in doorway.
-			a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
-	aside.v-components
-		.section-0.right-side
-			.v-img-wrap
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-		.section-1.right-side
-			.v-img-wrap
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-		.section-2.right-side
-			.v-img-wrap
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-				.v-img-container
-					span this is the hover content
-		.section-3.right-side
-			.v-img-wrap
-				.v-img-container
-					span this is the hover content
+		img.segment(src='/uploads/segment1.png')
+	each slide in slides
+		section.slide.active(style='background-image: url(uploads/#{slide.image.filename});')
+			.slide-content
+				h1 #{slide.title}
+				h3 #{slide.SubTitle}
+				p #{slide.body}
+				if slide.type == 'Search'
+					form.search
+						input#search-input(type="text", placeholder="Search Components")
+						input#search-btn(type="button", value="search")
+				else
+					a.btn.btn-primary.btn-lg(href='#{slide.link}', role='button') #{slide.Cta}
+	//- each v in vs
+	//- 	div #{v.title}
+	//- each slide in slides
+	//- 	aside.v-components
+	//- 		.section-0.right-side
+	//- 			.v-img-wrap
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 		.section-1.right-side
+	//- 			.v-img-wrap
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 		.section-2.right-side
+	//- 			.v-img-wrap
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 				.v-img-container
+	//- 					span this is the hover content
+	//- 		.section-3.right-side
+	//- 			.v-img-wrap
+	//- 				.v-img-container
+	//- 					span this is the hover content

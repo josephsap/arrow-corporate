@@ -33,8 +33,8 @@
 }
 
 .slide {
-	background-attachment: fixed;
 	background-size: cover;
+	background-repeat: no-repeat;
 	&:nth-child(1) {
 		z-index: 10;
 		background-color: tomato;
