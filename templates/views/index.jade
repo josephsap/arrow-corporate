@@ -4,11 +4,10 @@ block content
 	section.jumbotron.intro-video.text-center(style='background-image: url(uploads/#{hero.image.filename});')
 		.container
 			h1 #{hero.title}
-			a.btn.btn-primary.btn-lg.btn-hollow(href='#{hero.link}', role='button') #{hero.linkText}
+			a.btn.btn-primary.btn-lg.btn-hollow(href='/campaigns/#{hero.slug}', role='button') More Info
 	section.pre-slider
 		p
 			| Hashtag chartreuse cold-pressed dreamcatcher. Fingerstache venmo cliche VHS. Gluten-free tousled keytar kinfolk health goth cardigan. Keffiyeh humblebrag stumptown
 	include ../includes/full-screen-slider.jade
 	include ../includes/v-descriptions.jade
 	include ../includes/events.jade
-
