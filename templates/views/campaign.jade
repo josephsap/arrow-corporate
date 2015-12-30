@@ -4,16 +4,16 @@ block content
 	section.campaign-intro
 		section#js-campaign-copy.jumbotron.col-xs-12.col-md-6
 			.campaign-wrap
-				h1 #{Evnt.title}
-				p #{Evnt.body}
+				h1 #{page.title}
+				p #{page.body}
 		.col-xs-12.col-md-6.video-slider-container
 			div.video-slider
-				each video in Evnt.videos
+				each video in page.videos
 					div
 						a(href='#')
 							.embed-responsive.embed-responsive-16by9.hover-media
 								iframe.embed-responsive-item(src='#{video.videoUrl}')
 								.overlay
-									p #{video.title}
+									p #{page.title}
 
 		include ../includes/pre-footer.jade

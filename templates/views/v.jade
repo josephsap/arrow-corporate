@@ -1,15 +1,14 @@
 extends ../layouts/default
 
 block content
-	.content-hero(style='background-image: url(/uploads/#{v.image.filename});')
+	.content-hero(style='background-image: url(/uploads/#{page.image.filename});')
 	.container
 		.row
 			section.content-main.col-xs-12.col-sm-10.col-sm-offset-1.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
-				h1 #{v.title}
-				h3 #{v.excerpt}
-				p #{v.body}
-				img.content-img(src='/uploads/#{v.contentImage.filename}')
+				h1 #{page.title}
+				h3 #{page.excerpt}
+				p #{page.body}
+				img.content-img(src='/uploads/#{page.contentImage.filename}')
 				p
 					| movements smaller will do the trick for simple motion like a basic move across the screen. But for more complex animation on smaller viewports, you’ll need to simplify and reduce the number of moving parts. The key to this is determining what the vital parts of the animation are, to zone in on the parts that are most important to its message. Then remove the less necessary bits to distill the motion’s message down to the essentials.
 	include ../includes/pre-footer.jade
-

@@ -24,7 +24,7 @@ exports = module.exports = function(req, res) {
 				res.status(404).render('errors/404');
 			} else {
 				locals.title = result.title;
-				locals.Evnt = result;
+				locals.page = result;
 			}
 			next(err);
 		});
