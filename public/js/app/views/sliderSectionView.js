@@ -10,11 +10,9 @@ export default Backbone.View.extend({
 
 	initialize: function() {
 		_.bindAll(this);
-		console.log(this.$el, this);
-		console.log('slider section');
 
 		// scroll to top of page 
-		document.body.scrollTop = document.documentElement.scrollTop = 0;
+		// document.body.scrollTop = document.documentElement.scrollTop = 0;
 
 		// window height
 		this.$winHeight = $(window).height();
@@ -148,11 +146,13 @@ export default Backbone.View.extend({
 	lockSlider: function() {
 		this.inSliderSection = true;
 		this.$body.addClass('locked');
+		this.$slide.css('background-attachment', 'fixed');
 	},
 
 	unlockSlider: function() {
 		this.inSliderSection = false;
 		this.$body.removeClass('locked');
+		this.$slide.css('background-attachment', 'scroll');
 	},
 
 	showSlide: function() {

@@ -13,49 +13,11 @@
 						input#search-btn(type="button", value="search")
 				else
 					a.btn.btn-primary.btn-lg(href='#{slide.link}', role='button') #{slide.Cta}
-	//- each v in vs
-	//- 	div #{v.title}
-	//- each slide in slides
-	//- 	aside.v-components
-	//- 		.section-0.right-side
-	//- 			.v-img-wrap
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 		.section-1.right-side
-	//- 			.v-img-wrap
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 		.section-2.right-side
-	//- 			.v-img-wrap
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 				.v-img-container
-	//- 					span this is the hover content
-	//- 		.section-3.right-side
-	//- 			.v-img-wrap
-	//- 				.v-img-container
-	//- 					span this is the hover content
+	-var index = 0;
+	aside.v-components
+		each slide in slides
+			div(class="section-#{index++}").right-side
+				.v-img-wrap
+					each v in slide.V
+						.v-img-container
+							span #{v.title}
