@@ -37,7 +37,7 @@
 			}
 		}
 
-		>.active > a {
+		>.open > a {
 			color: darken($white, 10%) !important;
 			background-color: transparent !important;
 			@include tablet-portrait-and-up {
