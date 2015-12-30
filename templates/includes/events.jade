@@ -11,19 +11,19 @@ section#events
                                 img(src='/uploads/#{evnt.image.filename}')
                                 .overlay
                                     h4 #{evnt.title}
-                                    p #{evnt.excerpt}
+                                    p Watch the Video
                     else if index > 0 && index <= 4
                         li.sm-promo.hover-media
                             a(href='/campaigns/#{evnt.slug}')
                                 img(src='/uploads/#{evnt.image.filename}')
                                 .overlay
                                     h4 #{evnt.title}
-                                    p #{evnt.excerpt}
+                                    p Watch the Video
                     else
                         li.sm-promo.hover-media.hidden
                             a(href='/campaigns/#{evnt.slug}')
                                 img(src='/uploads/#{evnt.image.filename}')
                                 .overlay
                                     h4 #{evnt.title}
-                                    p #{evnt.excerpt}
-            h2#more.btn.btn-hollow.btn-default load more
+                                    p Watch the Video
+        button#more.btn.btn-hollow load more

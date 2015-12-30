@@ -12,15 +12,14 @@ export default Backbone.View.extend({
 		_.bindAll(this);
 	},
 
-	render: function() {
+	// render: function() {
 
-	},
+	// },
 
 	loadMoreEvents: function() {
-		console.log('hi')
 		this.$('.sm-promo').each(function() {
 			if($(this).hasClass('hidden')) {
-				$(this).removeClass('hidden');
+				$(this).fadeIn(200);
 			}
 		});
 	}

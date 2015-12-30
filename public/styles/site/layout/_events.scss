@@ -24,16 +24,21 @@
 
 .event-items {
 	margin-top: -120px;
+	margin-bottom: 50px;
 	li {
 		float: left;
 		overflow: hidden;
 		min-height: 167px;
-		// @include clearfix;
+		@include clearfix;
 	}
 
 	.overlay {
 		p, h4 {
 			top: 65%;
+		}
+
+		h4 {
+			margin-bottom: 8px;
 		}
 	}
 
@@ -59,4 +64,9 @@
 	@include tablet-portrait-and-up {
 		width: 25%;
 	}
+}
+
+#more {
+	display: table;
+	margin: 0 auto;
 }

@@ -1,5 +1,4 @@
 .campaign-intro {
-	// max-height: 650px;
 	.jumbotron {
 		background-color: $white;
 		margin-bottom: 0;
@@ -8,12 +7,14 @@
 	.campaign-wrap {
 		max-width: 600px;
 		margin: 0 auto;
+		@include tablet-portrait-and-up {
+			padding: 0 50px 0 20px;
+		}
 	}
 }
 
 .video-slider-container, .event-items {
 	padding: 0;
-
 	li {
 		position: relative;
 	}

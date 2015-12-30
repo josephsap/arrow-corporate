@@ -17,6 +17,7 @@ V.add({
 	image: { type: Types.LocalFile, dest: 'public/uploads' },
 	slug: { type: Types.Key, unique: true},
 	body: { type: Types.Html },
+	contentImage: {type: Types.LocalFile, dest: 'public/uploads'},
   v1: { type: Types.Relationship, ref: 'V'},
   v2: { type: Types.Relationship, ref: 'V' },
   v3: { type: Types.Relationship, ref: 'V' },
