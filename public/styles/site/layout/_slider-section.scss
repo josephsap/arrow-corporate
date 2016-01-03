@@ -153,7 +153,7 @@
     }
 
     100% {
-		@include transform(translate(0, 0));  
+		@include transform(translate(0, 0));
     }
 }
 
@@ -208,16 +208,20 @@
 // the right side of the slider
 .v-img-wrap {
 	display: inline-block;
-	width: 200px;
+	width: 100%;
 }
 
 .v-img-container {
 	position: relative;
-	cursor: pointer;
     width: auto;
     height: auto;
     background: url('../images/read.jpg') center center / cover no-repeat;
     background-color: #093d6f;
+
+    h4 {
+    	margin: 0;
+    	color: $white;
+    }
 
     &:hover:after {
     	opacity: 1;
@@ -236,6 +240,13 @@
     	@include transition(0.2s ease);
     }
 
+    &:hover > span {
+		@include transition(0.3s ease);
+		@include transform(translateX(-90%));
+		width: 110%;
+		visibility: visible;
+    }
+
     span {
     	color: aqua;
     	top: 0px;
@@ -245,9 +256,11 @@
     	position: absolute;
     	height: 100%;
     	width: 100%;
-    	display: none;
     	padding-left: 20px;
     	border-top: 4px solid tomato;
+    	visibility: hidden;
+    	@include transform(translateX(0%));
+    	@include transition(0.3s ease);
     }
 }
 

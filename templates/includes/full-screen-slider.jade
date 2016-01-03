@@ -13,11 +13,14 @@
 						input#search-btn(type="button", value="search")
 				else
 					a.btn.btn-primary.btn-lg(href='#{slide.link}', role='button') #{slide.Cta}
-	-var index = 0;
+	-var index = slides.length - 1;
 	aside.v-components
-		each slide in slides
-			div(class="section-#{index++}").right-side
+		while index >= 0
+			div(class="section-#{index}").right-side
 				.v-img-wrap
-					each v in slide.V
+					each v in slides[index--].V
 						.v-img-container
-							span #{v.title}
+							h4 #{v.title}
+							span #{v.excerpt}
+								a(href='v/#{v.slug}')
+									p #{v.slug}

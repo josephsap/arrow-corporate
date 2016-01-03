@@ -10,6 +10,10 @@ export default Backbone.View.extend({
 
 	initialize: function() {
 		_.bindAll(this);
+		// this.render();
+	},
+
+	render: function() {
 
 		// scroll to top of page 
 		// document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -39,13 +43,9 @@ export default Backbone.View.extend({
 		this.mainBottomBuffer = this.$main.offset().top + 70;
 		this.mainTop = this.$main.offset().top;
 		this.setHeights(this.$winHeight);
-		this.sizeRightSideImgs();
-		this.imgHoverInfo();
-		this.render();
-	},
-
-	render: function() {
+		// this.imgHoverInfo();
 		this.start();
+		this.sizeRightSideImgs();
 	},
 
 	setHeights: function(winHeight) {
@@ -157,7 +157,7 @@ export default Backbone.View.extend({
 
 	showSlide: function() {
 		var _this = this;
-		var rotateAmount = 450;
+		var rotateAmount = 90;
 
 		// reset
 		this.delta = 0;
@@ -266,7 +266,11 @@ export default Backbone.View.extend({
 				var imgHeight = this.$winHeight / 4;
 
 				// center the short section
-				this.$('.section-' + [i]).addClass('short-section');
+				this.$('.section-' + [i]).addClass('short-section').find('.v-img-container').each(function() {
+				$(this).css({
+					height: imgHeight
+				});
+			});
 				this.$('.short-section').find('.v-img-wrap').css('margin-top', - imgHeight / 2);
 
 			// else set it to fit the window
@@ -280,22 +284,6 @@ export default Backbone.View.extend({
 				});
 			});
 		}
-	},
-
-	imgHoverInfo: function() {
-        this.$vImgContainer.hover(function () {
-				var _this = $(this);
-				var $slidelem 	= _this.find('span');
-				$slidelem.stop().animate({'width':_this.width() * 2.5},200);
-				$slidelem.find('span').stop(true,true).fadeIn();
-			},
-			function () {
-				var _this = $(this);
-				var $slidelem 	= _this.find('span');
-				$slidelem.stop().animate({'width':'100%'},150);
-				$slidelem.find('span').stop(true,true).fadeOut();
-			}
-		);
 	}
 
 });

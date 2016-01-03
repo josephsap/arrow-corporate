@@ -2485,15 +2485,17 @@ input:focus:-ms-input-placeholder {
 
 .v-img-wrap {
   display: inline-block;
-  width: 200px; }
+  width: 100%; }
 
 .v-img-container {
   position: relative;
-  cursor: pointer;
   width: auto;
   height: auto;
   background: url("../images/read.jpg") center center/cover no-repeat;
   background-color: #093d6f; }
+  .v-img-container h4 {
+    margin: 0;
+    color: #FFFFFF; }
   .v-img-container:hover:after {
     opacity: 1; }
   .v-img-container:after {
@@ -2507,6 +2509,12 @@ input:focus:-ms-input-placeholder {
     background-color: tomato;
     opacity: 0;
     transition: 0.2s ease; }
+  .v-img-container:hover > span {
+    transition: 0.3s ease;
+    -webkit-transform: translateX(-90%);
+    transform: translateX(-90%);
+    width: 110%;
+    visibility: visible; }
   .v-img-container span {
     color: aqua;
     top: 0px;
@@ -2516,9 +2524,12 @@ input:focus:-ms-input-placeholder {
     position: absolute;
     height: 100%;
     width: 100%;
-    display: none;
     padding-left: 20px;
-    border-top: 4px solid tomato; }
+    border-top: 4px solid tomato;
+    visibility: hidden;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    transition: 0.3s ease; }
 
 .navbar {
   margin-bottom: 0;
