@@ -118,11 +118,10 @@
 }
 
 .circle {
-	// background: url('../images/circle-base.png') center center / cover no-repeat;
-	border: 4px solid black;
+	border: 3px solid rgba(0,0,0,0.45);
 	margin: 80px auto;
-	width: 70px;
-	height: 70px;
+	width: 68px;
+	height: 68px;
 	position: absolute;
     left: 20px;
     top: 50%;
@@ -133,23 +132,28 @@
 }
 
 .segment {
+	border: 3px solid $white;
+    width: 68px;
+    height: 68px;
+    top: -3px;
+    left: -3px;
 	position: absolute;
-	right: -4px;
-	top: -4px;
+	border-color: $white transparent transparent transparent;
+	border-radius: 50%/34px 34px 0 0;
 	@include transition(0.25s ease);
 }
 
 @include keyframes(lift) {
     25% {
-		@include transform(translate(5px, -5px));  
+		@include transform(translate(0, -3px));  
     }
 
     50% {
-		@include transform(translate(5px, -5px));  
+		@include transform(translate(0, -3px));  
     }
 
     75% {
-		@include transform(translate(5px, -5px));  
+		@include transform(translate(0, -3px));  
     }
 
     100% {
@@ -201,7 +205,6 @@
 	background: none;
 	border: none;
 	text-indent: -9999px;
-	// line-height: 0;
 }
 
 

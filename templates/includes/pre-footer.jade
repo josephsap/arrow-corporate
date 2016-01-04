@@ -7,22 +7,20 @@
                 .inner-wrap
                     if page.v1 && page.v1.image
                         img(src='/uploads/#{page.v1.image.filename}')
-                        a.card-bottom.btn(href='/v/#{page.v1.slug}')
-                        p= page.v1.excerpt
-                        p
-                          a.card-link(href='/v/#{page.v3.slug}') Learn More
+                        a.card-bottom(href='/v/#{page.v1.slug}')
+                            p= page.v1.excerpt
+                            p.card-link Learn More
             .col-sm-4.col-md-4.card
                 .inner-wrap
                     if page.v2 && page.v2.image
                         img(src='/uploads/#{page.v2.image.filename}')
-                        a.card-bottom.btn(href='/v/#{page.v2.slug}')
-                        p= page.v2.excerpt
-                        p
-                          a.card-link(href='/v/#{page.v3.slug}') Learn More
+                        a.card-bottom(href='/v/#{page.v2.slug}')
+                            p= page.v2.excerpt
+                            p.card-link Learn More
             .col-sm-4.col-md-4.card
                 .inner-wrap
                     if page.v3 && page.v3.image
                         img(src='/uploads/#{page.v3.image.filename}')
-                        p= page.v3.excerpt
-                        p
-                          a.card-link(href='/v/#{page.v3.slug}') Learn More
+                        a.card-bottom(href='/v/#{page.v3.slug}')
+                            p= page.v3.excerpt
+                            p.card-link Learn More

@@ -4,6 +4,7 @@ block content
 	section.jumbotron.intro-video.text-center(style='background-image: url(uploads/#{hero.image.filename});')
 		.container
 			h1 #{hero.title}
+			h3 #{hero.excerpt}
 			a.btn.btn-primary.btn-lg.btn-hollow(href='/campaigns/#{hero.slug}', role='button') More Info
 	section.pre-slider
 		p

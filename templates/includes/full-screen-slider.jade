@@ -1,6 +1,6 @@
 #slider-section
 	.circle
-		img.segment(src='/uploads/segment1.png')
+		div.segment
 	each slide in slides
 		section.slide.active(style='background-image: url(uploads/#{slide.image.filename});')
 			.slide-content
